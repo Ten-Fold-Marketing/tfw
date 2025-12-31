@@ -1,31 +1,50 @@
+import { motion } from "framer-motion";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-background border-t border-border py-12">
       <div className="container-wide">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row justify-between items-center gap-6"
+        >
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <span className="text-foreground text-lg font-display">✦</span>
+          <motion.div 
+            className="flex items-center gap-2 group cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+          >
+            <span className="text-foreground text-lg font-display transition-transform duration-300 group-hover:rotate-45">✦</span>
             <span className="font-display text-lg text-foreground">Ten Fold</span>
-          </div>
+          </motion.div>
 
           {/* Links */}
           <nav className="flex gap-8 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <motion.a 
+              href="#" 
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
+              whileHover={{ y: -2 }}
+            >
               Privacy Policy
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-300">
+            </motion.a>
+            <motion.a 
+              href="#" 
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
+              whileHover={{ y: -2 }}
+            >
               Terms
-            </a>
+            </motion.a>
           </nav>
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground">
             © {currentYear} Ten Fold Marketing
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

@@ -65,49 +65,92 @@ const moreClients = [
   }
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.08,
+      duration: 0.6,
+      ease: "easeOut" as const
+    }
+  })
+};
+
 const Clients = () => {
   return (
     <section className="section-padding bg-card relative overflow-hidden">
       {/* Section label */}
       <div className="container-wide relative z-10">
-        <div className="flex items-center justify-between mb-16">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex items-center justify-between mb-16"
+        >
           <span className="section-label">Selected Clients</span>
           <span className="section-label">01</span>
-        </div>
+        </motion.div>
         
-        <div className="mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
             Some Of Our <span className="italic">Clients</span>
           </h2>
           <p className="text-muted-foreground max-w-xl text-lg">
             We've had the privilege of working with incredible entrepreneurs and thought leaders across various industries.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {moreClients.map((client, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              viewport={{ once: true }}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden"
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={cardVariants}
+              whileHover={{ y: -8 }}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
             >
-              <img 
-                src={client.image} 
-                alt={client.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h4 className="text-lg font-display text-foreground">{client.name}</h4>
+              {/* Image with proper styling */}
+              <div className="absolute inset-0 bg-muted">
+                <img 
+                  src={client.image} 
+                  alt={client.name}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 client-overlay opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              
+              {/* Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-500 group-hover:translate-y-[-4px]">
+                <motion.h4 
+                  className="text-lg font-display text-foreground mb-1"
+                >
+                  {client.name}
+                </motion.h4>
                 <p className="text-foreground/80 text-sm">{client.title}</p>
                 {client.subscribers && (
-                  <p className="text-xs text-muted-foreground mt-1">{client.subscribers}</p>
+                  <p className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {client.subscribers}
+                  </p>
                 )}
               </div>
+
+              {/* Hover border glow */}
+              <div className="absolute inset-0 rounded-2xl border border-foreground/0 group-hover:border-foreground/20 transition-colors duration-500" />
             </motion.div>
           ))}
         </div>
