@@ -7,6 +7,7 @@ import marisaPeer from "@/assets/clients/marisa-peer.jpeg";
 import lukeBassist from "@/assets/clients/luke-bassist.jpeg";
 import hattieWilloughby from "@/assets/clients/hattie-willoughby.jpeg";
 import anthonyMiranda from "@/assets/clients/anthony-miranda.png";
+import { motion } from "framer-motion";
 
 const moreClients = [
   {
@@ -66,41 +67,48 @@ const moreClients = [
 
 const Clients = () => {
   return (
-    <section className="section-padding bg-background relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+    <section className="section-padding bg-card relative overflow-hidden">
+      {/* Section label */}
       <div className="container-wide relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Some Of Our Clients</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+        <div className="flex items-center justify-between mb-16">
+          <span className="section-label">Selected Clients</span>
+          <span className="section-label">01</span>
+        </div>
+        
+        <div className="mb-16">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+            Some Of Our <span className="italic">Clients</span>
+          </h2>
+          <p className="text-muted-foreground max-w-xl text-lg">
             We've had the privilege of working with incredible entrepreneurs and thought leaders across various industries.
           </p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {moreClients.map((client, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className="relative group rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              viewport={{ once: true }}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden"
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img 
-                  src={client.image} 
-                  alt={client.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h4 className="text-base font-bold text-white">{client.name}</h4>
-                <p className="text-white/90 font-medium text-sm">{client.title}</p>
+              <img 
+                src={client.image} 
+                alt={client.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h4 className="text-lg font-display text-foreground">{client.name}</h4>
+                <p className="text-foreground/80 text-sm">{client.title}</p>
                 {client.subscribers && (
-                  <p className="text-xs text-white/70 mt-1">{client.subscribers}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{client.subscribers}</p>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

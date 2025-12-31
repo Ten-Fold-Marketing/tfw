@@ -1,42 +1,44 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const ContactForm = () => {
-  const scrollToContact = () => {
-    // In a real implementation, this would open a calendar booking widget
+  const openCalendly = () => {
     window.open('https://calendly.com', '_blank');
   };
 
   return (
-    <section id="contact" className="section-padding bg-muted/30 relative overflow-hidden">
-      {/* Background accents */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      <div className="absolute -top-32 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-
+    <section id="contact" className="section-padding bg-card relative overflow-hidden">
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
-            Apply For Your Strategy Call
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Book A <span className="text-gradient">30-Min Strategy Call</span>
+        {/* Section header */}
+        <div className="flex items-center justify-between mb-16">
+          <span className="section-label">Contact</span>
+          <span className="section-label">07</span>
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="max-w-3xl"
+        >
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-8">
+            Book A <span className="italic">Strategy</span> Call
           </h2>
-          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl leading-relaxed">
             Don't worry this is not a BS call where I'll pitch you our services. This is to see where you are and giving a personal roadmap to scale your business. And if you are interested in working together and we are a good fit, we'll see how it goes!
           </p>
 
           <Button 
             variant="hero" 
-            size="xl" 
-            onClick={scrollToContact}
-            className="group"
+            size="lg" 
+            onClick={openCalendly}
           >
-            <Calendar className="w-5 h-5" />
             Book A 30-Min Strategy Call
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4" />
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
