@@ -10,33 +10,72 @@ const Hero = () => {
     });
   };
 
+  const textVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1 + i * 0.15,
+        duration: 0.8,
+        ease: "easeOut" as const
+      }
+    })
+  };
+
+  const fadeUpVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.6,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-20">
       <div className="container-wide relative z-10 py-20 md:py-28">
         <div className="max-w-6xl mx-auto">
           {/* Main headline - Ivory style large typography */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="mb-8"
-          >
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight">
+          <div className="mb-8 overflow-hidden">
+            <motion.h1 
+              custom={0}
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
+            >
               FINALLY GET
-            </h1>
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight">
+            </motion.h1>
+            <motion.h1 
+              custom={1}
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
+            >
               PAID <span className="italic">what you're</span>
-            </h1>
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight">
+            </motion.h1>
+            <motion.h1 
+              custom={2}
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
+            >
               WORTH
-            </h1>
-          </motion.div>
+            </motion.h1>
+          </div>
 
           {/* Subheadline and CTA row */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUpVariant}
             className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mt-16"
           >
             {/* Description */}
@@ -47,24 +86,36 @@ const Hero = () => {
             </div>
 
             {/* Scroll indicator */}
-            <div className="hidden lg:flex items-center gap-3 text-muted-foreground">
-              <div className="w-8 h-8 rounded-full border border-muted-foreground/30 flex items-center justify-center">
-                <ArrowDown className="w-4 h-4 animate-bounce" />
-              </div>
-              <span className="text-xs uppercase tracking-[0.2em]">Scroll to explore</span>
-            </div>
+            <motion.div 
+              className="hidden lg:flex items-center gap-3 text-muted-foreground cursor-pointer group"
+              onClick={() => scrollToSection("clients")}
+              whileHover={{ y: 4 }}
+            >
+              <motion.div 
+                className="w-8 h-8 rounded-full border border-muted-foreground/30 flex items-center justify-center group-hover:border-foreground/50 transition-colors duration-300"
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowDown className="w-4 h-4" />
+              </motion.div>
+              <span className="text-xs uppercase tracking-[0.2em] group-hover:text-foreground transition-colors duration-300">Scroll to explore</span>
+            </motion.div>
 
             {/* CTA Button */}
-            <div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
               <Button 
                 variant="hero" 
                 size="lg" 
                 onClick={() => scrollToSection("contact")}
+                className="group"
               >
                 Get Started
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
