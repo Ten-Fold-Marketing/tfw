@@ -8,6 +8,7 @@ import lukeBassist from "@/assets/clients/luke-bassist.jpeg";
 import hattieWilloughby from "@/assets/clients/hattie-willoughby.jpeg";
 import anthonyMiranda from "@/assets/clients/anthony-miranda.png";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const moreClients = [
   {
@@ -65,20 +66,12 @@ const moreClients = [
   }
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.08,
-      duration: 0.6,
-      ease: "easeOut" as const
-    }
-  })
-};
-
 const Clients = () => {
+  const [isPaused, setIsPaused] = useState(false);
+  
+  // Duplicate clients for seamless loop
+  const duplicatedClients = [...moreClients, ...moreClients];
+
   return (
     <section className="section-padding bg-card relative overflow-hidden">
       {/* Section label */}
@@ -108,39 +101,61 @@ const Clients = () => {
             We've had the privilege of working with incredible entrepreneurs and thought leaders across various industries.
           </p>
         </motion.div>
+      </div>
+      
+      {/* Infinite Marquee */}
+      <div 
+        className="relative w-full overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {moreClients.map((client, index) => (
+        <motion.div
+          className="flex gap-6"
+          animate={{
+            x: isPaused ? undefined : [0, -50 * moreClients.length + "%"]
+          }}
+          transition={{
+            x: {
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
+              repeatType: "loop"
+            }
+          }}
+          style={{ 
+            width: "fit-content",
+            animationPlayState: isPaused ? "paused" : "running"
+          }}
+        >
+          {duplicatedClients.map((client, index) => (
             <motion.div 
               key={index}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={cardVariants}
-              whileHover={{ y: -8 }}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              className="group relative w-[320px] md:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer flex-shrink-0"
             >
               {/* Image with proper styling */}
               <div className="absolute inset-0 bg-muted">
                 <img 
                   src={client.image} 
                   alt={client.name}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
                   loading="lazy"
                 />
               </div>
               
               {/* Overlay gradient */}
-              <div className="absolute inset-0 client-overlay opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
               
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-500 group-hover:translate-y-[-4px]">
-                <motion.h4 
-                  className="text-lg font-display text-foreground mb-1"
-                >
+                <h4 className="text-lg font-display text-foreground mb-1">
                   {client.name}
-                </motion.h4>
+                </h4>
                 <p className="text-foreground/80 text-sm">{client.title}</p>
                 {client.subscribers && (
                   <p className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -153,7 +168,7 @@ const Clients = () => {
               <div className="absolute inset-0 rounded-2xl border border-foreground/0 group-hover:border-foreground/20 transition-colors duration-500" />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
