@@ -1,11 +1,12 @@
-import { Target, FileText, ShoppingCart, TrendingUp, Megaphone, BarChart3 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const weeks = [
   {
-    icon: Target,
-    title: "Week 1: Strategy & Lead Magnet",
-    subtitle: "What We Do",
+    number: "01",
+    title: "Strategy & Lead Magnet",
+    subtitle: "Week 1",
     tasks: [
       "Define the target audience and offer positioning.",
       "Plan the lead magnet, low-ticket, and mid-ticket offers.",
@@ -15,9 +16,9 @@ const weeks = [
     ]
   },
   {
-    icon: FileText,
-    title: "Week 2-3: Low-Ticket Offer Development & Launch",
-    subtitle: "What We Do",
+    number: "02",
+    title: "Low-Ticket Offer Development & Launch",
+    subtitle: "Week 2-3",
     tasks: [
       "Outline the low-ticket product (mini-course, ebook, template, etc.).",
       "Write sales pages, videos, email sequence and membership area.",
@@ -26,9 +27,9 @@ const weeks = [
     ]
   },
   {
-    icon: ShoppingCart,
-    title: "Weeks 4-5: Mid-Ticket Offer Development",
-    subtitle: "What We Do",
+    number: "03",
+    title: "Mid-Ticket Offer Development",
+    subtitle: "Weeks 4-5",
     tasks: [
       "Outline the mid-ticket product (course, coaching, membership, etc.).",
       "Write the sales pages, videos, email sequence and membership area.",
@@ -36,9 +37,9 @@ const weeks = [
     ]
   },
   {
-    icon: TrendingUp,
-    title: "Week 6: Mid-Ticket Launch & Optimization",
-    subtitle: "What We Do",
+    number: "04",
+    title: "Mid-Ticket Launch & Optimization",
+    subtitle: "Week 6",
     tasks: [
       "Launch promotional campaigns (emails, YouTube videos, social posts).",
       "Optimize conversions and track performance.",
@@ -46,9 +47,9 @@ const weeks = [
     ]
   },
   {
-    icon: Megaphone,
-    title: "Week 7 And Beyond: Additional Launches And Paid Ads (Optional)",
-    subtitle: "What We Do",
+    number: "05",
+    title: "Additional Launches And Paid Ads",
+    subtitle: "Week 7+",
     tasks: [
       "Plan out future low-ticket & mid-ticket launches to further monetize your audience.",
       "Optional: Launch paid ads using our own money to scale your offer to the next level."
@@ -62,63 +63,64 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="section-padding bg-muted/30 relative overflow-hidden">
-      {/* Gradient divider at top */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-teal-blue" />
-      
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
-
+    <section id="services" className="section-padding bg-card relative overflow-hidden">
       <div className="container-wide relative z-10">
         {/* Section header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
-            WE GOT YOU COVERED FROM A TO Z
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            A Full-Blown{" "}
-            <span className="text-gradient">Acquisition System</span>
-          </h2>
+        <div className="flex items-center justify-between mb-16">
+          <span className="section-label">Services</span>
+          <span className="section-label">03</span>
         </div>
 
-        {/* Timeline */}
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="mb-16">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground max-w-3xl mb-6">
+            Tailored Solutions for <span className="italic">Strategic</span> Growth
+          </h2>
+          <p className="text-muted-foreground max-w-xl text-lg">
+            We've got you covered from A to Z with a full-blown acquisition system.
+          </p>
+        </div>
+
+        {/* Services list */}
+        <div className="space-y-0">
           {weeks.map((week, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className="group relative bg-card border border-border rounded-2xl p-8 hover:border-accent-secondary/50 transition-all duration-500"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group border-t border-border py-10 hover:bg-muted/30 transition-colors duration-300 px-4 -mx-4"
             >
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10">
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <week.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{week.title}</h3>
-                    <p className="text-primary font-semibold mb-4">{week.subtitle}</p>
-                    <ul className="space-y-2">
-                      {week.tasks.map((task, taskIndex) => (
-                        <li key={taskIndex} className="flex items-start gap-3 text-muted-foreground">
-                          <span className="text-accent-secondary mt-1">•</span>
-                          <span>{task}</span>
-                        </li>
-                      ))}
-                    </ul>
+              <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                <div className="flex items-baseline gap-6 lg:w-1/3">
+                  <span className="text-muted-foreground text-sm font-medium">{week.number}</span>
+                  <div>
+                    <h3 className="font-display text-2xl md:text-3xl text-foreground group-hover:text-foreground/90 transition-colors">
+                      {week.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mt-1">{week.subtitle}</p>
                   </div>
                 </div>
+                <div className="lg:w-2/3 lg:pl-8">
+                  <ul className="space-y-2">
+                    {week.tasks.map((task, taskIndex) => (
+                      <li key={taskIndex} className="flex items-start gap-3 text-muted-foreground">
+                        <span className="text-foreground/40 mt-1">•</span>
+                        <span>{task}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button variant="hero" size="xl" onClick={scrollToContact}>
+        <div className="mt-16 text-center">
+          <Button variant="hero" size="lg" onClick={scrollToContact}>
             Book A 30-Min Strategy Call
+            <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
       </div>

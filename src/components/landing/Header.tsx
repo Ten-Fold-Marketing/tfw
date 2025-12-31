@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Mail } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,25 +19,48 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const navLinks = [
+    { label: "Home", href: "#" },
+    { label: "Services", href: "#services" },
+    { label: "Team", href: "#team" },
+    { label: "About", href: "#about" },
+  ];
+
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-lg" 
+          ? "bg-background/95 backdrop-blur-md border-b border-border/50" 
           : "bg-transparent"
       }`}
     >
       <div className="container-wide">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
-            <span className="font-bold text-xl text-foreground tracking-tight">TEN FOLD MARKETING</span>
+          <a href="#" className="flex items-center gap-2">
+            <span className="text-foreground text-lg font-display">✦</span>
+            <span className="font-display text-lg text-foreground">Ten Fold</span>
           </a>
 
-          {/* Desktop - Email */}
-          <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-            <Mail className="w-4 h-4" />
-            <span className="text-sm">info@tenfoldmarketing.com</span>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a 
+                key={link.label}
+                href={link.href}
+                className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden md:block">
+            <Button variant="hero" size="default" onClick={scrollToContact}>
+              Get Started
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -51,16 +74,23 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-lg">
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-2 text-muted-foreground py-2">
-                <Mail className="w-4 h-4" />
-                <span className="text-sm">info@tenfoldmarketing.com</span>
-              </div>
-              <Button variant="hero" size="lg" onClick={scrollToContact}>
-                Book A Call
-              </Button>
-            </div>
+          <div className="md:hidden py-6 border-t border-border/50 bg-background/98 backdrop-blur-lg">
+            <nav className="flex flex-col gap-4 mb-6">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.href}
+                  className="text-foreground/70 hover:text-foreground transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <Button variant="hero" size="lg" onClick={scrollToContact} className="w-full">
+              Get Started
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
         )}
       </div>
