@@ -120,7 +120,7 @@ const Clients = () => {
           }}
           transition={{
             x: {
-              duration: 40,
+              duration: 120,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop"
@@ -143,7 +143,7 @@ const Clients = () => {
                 <img 
                   src={client.image} 
                   alt={client.name}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
+                  className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-110 grayscale group-hover:grayscale-0"
                   loading="lazy"
                 />
               </div>
