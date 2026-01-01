@@ -37,8 +37,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-20">
-      <div className="container-wide relative z-10 py-20 md:py-28">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-16">
+      <div className="container-wide relative z-10 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
           {/* Main headline - Ivory style large typography */}
           <div className="mb-8 overflow-hidden">
@@ -58,7 +58,7 @@ const Hero = () => {
               variants={textVariants}
               className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
             >
-              <span className="italic">what you're</span> WORTH
+              what <span className="italic">you're</span> WORTH
             </motion.h1>
           </div>
 
