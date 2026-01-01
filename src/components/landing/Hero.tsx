@@ -58,7 +58,7 @@ const Hero = () => {
               variants={textVariants}
               className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
             >
-              what <span className="italic">you're</span> WORTH
+              what <span className="italic">you're WORTH</span>
             </motion.h1>
           </div>
 
