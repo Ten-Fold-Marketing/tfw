@@ -49,7 +49,7 @@ const Hero = () => {
               variants={textVariants}
               className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
             >
-              FINALLY GET
+              FINALLY GET PAID
             </motion.h1>
             <motion.h1 
               custom={1}
@@ -58,16 +58,7 @@ const Hero = () => {
               variants={textVariants}
               className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
             >
-              PAID <span className="italic">what you're</span>
-            </motion.h1>
-            <motion.h1 
-              custom={2}
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
-            >
-              WORTH
+              <span className="italic">what you're</span> WORTH
             </motion.h1>
           </div>
 
