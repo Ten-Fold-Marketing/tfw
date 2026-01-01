@@ -17,23 +17,23 @@
     --popover: 165 22% 17%;
     --popover-foreground: 45 30% 92%;
 
-    /* Primary: Teal accent for buttons/CTAs */
-    --primary: 171 76% 55%;
+    /* Primary: Green accent for buttons/CTAs */
+    --primary: 148 45% 50%;
     --primary-foreground: 165 25% 10%;
 
-    /* Secondary: Muted teal */
-    --secondary: 171 50% 40%;
+    /* Secondary: Muted green */
+    --secondary: 148 35% 38%;
     --secondary-foreground: 45 30% 92%;
 
     --muted: 165 18% 22%;
     --muted-foreground: 45 15% 65%;
 
-    /* Accent: Teal highlight */
-    --accent: 171 76% 55%;
+    /* Accent: Green highlight */
+    --accent: 148 45% 50%;
     --accent-foreground: 165 25% 10%;
 
-    /* Secondary Accent: Darker teal */
-    --accent-secondary: 171 60% 35%;
+    /* Secondary Accent: Darker green */
+    --accent-secondary: 148 40% 35%;
     --accent-secondary-foreground: 45 30% 92%;
 
     --destructive: 0 62% 50%;
@@ -46,11 +46,11 @@
     --radius: 9999px;
 
     /* Custom design tokens */
-    --glow-primary: 0 0 60px hsl(171 76% 55% / 0.25);
-    --glow-secondary: 0 0 40px hsl(171 60% 35% / 0.3);
+    --glow-primary: 0 0 60px hsl(148 45% 50% / 0.25);
+    --glow-secondary: 0 0 40px hsl(148 40% 35% / 0.3);
     --gradient-hero: linear-gradient(180deg, hsl(165 25% 14%) 0%, hsl(165 22% 12%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(165 22% 17%) 0%, hsl(165 20% 15%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(171 76% 55%) 0%, hsl(171 60% 45%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(148 45% 50%) 0%, hsl(148 40% 40%) 100%);
     --gradient-section: linear-gradient(180deg, hsl(165 22% 17%) 0%, hsl(165 25% 14%) 100%);
 
     --sidebar-background: 165 25% 14%;
@@ -70,15 +70,15 @@
     --card-foreground: 45 30% 92%;
     --popover: 165 22% 12%;
     --popover-foreground: 45 30% 92%;
-    --primary: 171 76% 55%;
+    --primary: 148 45% 50%;
     --primary-foreground: 165 25% 10%;
-    --secondary: 171 50% 40%;
+    --secondary: 148 35% 38%;
     --secondary-foreground: 45 30% 92%;
     --muted: 165 18% 18%;
     --muted-foreground: 45 15% 60%;
-    --accent: 171 76% 55%;
+    --accent: 148 45% 50%;
     --accent-foreground: 165 25% 10%;
-    --accent-secondary: 171 60% 30%;
+    --accent-secondary: 148 40% 30%;
     --accent-secondary-foreground: 45 30% 92%;
     --destructive: 0 62% 45%;
     --destructive-foreground: 45 30% 92%;
