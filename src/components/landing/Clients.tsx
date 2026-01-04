@@ -116,7 +116,7 @@ const Clients = () => {
         <div
           className="flex gap-6 w-fit"
           style={{ 
-            animation: 'marquee-clients 240s linear infinite',
+            animation: 'marquee-clients 120s linear infinite',
             animationPlayState: isPaused ? 'paused' : 'running'
           }}
         >
