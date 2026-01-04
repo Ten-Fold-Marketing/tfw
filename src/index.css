@@ -297,6 +297,15 @@
   }
 }
 
+@keyframes marquee-clients {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;

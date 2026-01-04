@@ -113,22 +113,11 @@ const Clients = () => {
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
         
-        <motion.div
-          className="flex gap-6"
-          animate={{
-            x: isPaused ? undefined : [0, -50 * moreClients.length + "%"]
-          }}
-          transition={{
-            x: {
-              duration: 120,
-              repeat: Infinity,
-              ease: "linear",
-              repeatType: "loop"
-            }
-          }}
+        <div
+          className="flex gap-6 w-fit"
           style={{ 
-            width: "fit-content",
-            animationPlayState: isPaused ? "paused" : "running"
+            animation: 'marquee-clients 240s linear infinite',
+            animationPlayState: isPaused ? 'paused' : 'running'
           }}
         >
           {duplicatedClients.map((client, index) => (
@@ -168,7 +157,7 @@ const Clients = () => {
               <div className="absolute inset-0 rounded-2xl border border-foreground/0 group-hover:border-foreground/20 transition-colors duration-500" />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
