@@ -18,15 +18,19 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="flex justify-center lg:justify-start"
+            className="relative group"
           >
-            <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-border">
+            <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden">
               <img 
                 src={marcClerouxLarge} 
                 alt="Marc Cleroux"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
+            {/* Decorative border */}
+            <div className="absolute -inset-3 border border-border/30 rounded-3xl -z-10" />
           </motion.div>
 
           {/* Right - Content */}
