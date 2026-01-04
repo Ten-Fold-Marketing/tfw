@@ -113,16 +113,16 @@ const Stats = () => {
       </section>
 
       {/* Values marquee */}
-      <div className="w-full bg-primary py-5 overflow-hidden">
+      <div className="w-full bg-foreground py-5 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="flex items-center gap-12 mx-12">
               {values.map((value, j) => (
                 <span key={j} className="flex items-center gap-12">
-                  <span className="text-primary-foreground font-medium tracking-wide uppercase text-sm">
+                  <span className="text-background font-medium tracking-wide uppercase text-sm">
                     {value}
                   </span>
-                  <span className="text-primary-foreground/60">✦</span>
+                  <span className="text-background/60">✦</span>
                 </span>
               ))}
             </div>

@@ -158,7 +158,7 @@ const Clients = () => {
                 </h4>
                 <p className="text-foreground/80 text-sm">{client.title}</p>
                 {client.subscribers && (
-                  <p className="text-xs text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {client.subscribers}
                   </p>
                 )}
