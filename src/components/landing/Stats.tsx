@@ -6,19 +6,19 @@ const stats = [
     value: 100,
     prefix: "$",
     suffix: "M+",
-    label: "Profitable Ad Spend"
+    label: "Revenue Generated"
   },
   {
-    value: 8,
+    value: 2.3,
     prefix: "",
-    suffix: " years",
-    label: "of transformative client success"
+    suffix: "M+",
+    label: "Emails Collected"
   },
   {
-    value: 3,
+    value: 100,
     prefix: "",
-    suffix: "x",
-    label: "Avg. Growth in Marketing ROI"
+    suffix: "+",
+    label: "Happy Partners"
   }
 ];
 
