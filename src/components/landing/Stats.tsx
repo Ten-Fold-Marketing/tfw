@@ -79,7 +79,7 @@ const Stats = () => {
         <div className="container-wide relative z-10">
           {/* Section label */}
           <div className="flex items-center justify-between mb-16">
-            <span className="section-label">Benefits</span>
+            <span className="section-label">OUR RESULTS</span>
             <span className="section-label">02</span>
           </div>
 
