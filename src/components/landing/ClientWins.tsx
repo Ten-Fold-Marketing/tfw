@@ -1,5 +1,11 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 import davidChauImg from "@/assets/clients/david-chau.webp";
 import raynerTeoImg from "@/assets/clients/rayner-teo.jpeg";
@@ -55,30 +61,51 @@ const clientWins = [
   },
 ];
 
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+};
+
 const AnimatedBar = ({ 
   value, 
   maxValue, 
   delay, 
-  inView 
+  inView,
+  label
 }: { 
   value: number; 
   maxValue: number; 
   delay: number; 
   inView: boolean;
+  label: string;
 }) => {
   const heightPercent = (value / maxValue) * 100;
   
   return (
-    <motion.div 
-      className="flex-1 bg-muted rounded-t-sm overflow-hidden flex flex-col justify-end min-h-[120px]"
-    >
-      <motion.div
-        initial={{ height: 0 }}
-        animate={inView ? { height: `${heightPercent}%` } : {}}
-        transition={{ duration: 0.8, delay, ease: "easeOut" }}
-        className="bg-gradient-to-t from-primary to-primary/70 rounded-t-sm"
-      />
-    </motion.div>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <motion.div 
+          className="flex-1 bg-muted rounded-t-sm overflow-hidden flex flex-col justify-end min-h-[120px] cursor-pointer"
+        >
+          <motion.div
+            initial={{ height: 0 }}
+            animate={inView ? { height: `${heightPercent}%` } : {}}
+            transition={{ duration: 0.8, delay, ease: "easeOut" }}
+            className="bg-gradient-to-t from-primary to-primary/70 rounded-t-sm hover:from-primary/90 hover:to-primary/60 transition-colors"
+          />
+        </motion.div>
+      </TooltipTrigger>
+      <TooltipContent side="top" className="bg-card border-border text-foreground">
+        <div className="text-center">
+          <p className="font-display text-lg">{formatCurrency(value)}</p>
+          <p className="text-xs text-muted-foreground">{label}</p>
+        </div>
+      </TooltipContent>
+    </Tooltip>
   );
 };
 
@@ -141,15 +168,18 @@ const ClientWinCard = ({
       
       {/* Chart */}
       <div className="relative z-10 flex items-end gap-1.5 h-32 mb-4">
-        {win.data.map((point, i) => (
-          <AnimatedBar
-            key={i}
-            value={point.value}
-            maxValue={maxValue}
-            delay={index * 0.2 + i * 0.1}
-            inView={inView}
-          />
-        ))}
+        <TooltipProvider delayDuration={0}>
+          {win.data.map((point, i) => (
+            <AnimatedBar
+              key={i}
+              value={point.value}
+              maxValue={maxValue}
+              delay={index * 0.2 + i * 0.1}
+              inView={inView}
+              label={'month' in point ? point.month : point.day}
+            />
+          ))}
+        </TooltipProvider>
       </div>
       
       {/* X-axis labels */}
