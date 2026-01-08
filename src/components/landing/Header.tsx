@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import logoOption1 from "@/assets/tenfold-logo.png";
-import logoOption2 from "@/assets/tenfold-logo-icon.png";
+import logo from "@/assets/tenfold-logo-new.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,31 +42,14 @@ const Header = () => {
     >
       <div className="container-wide">
         <div className="flex items-center justify-between h-20">
-          {/* Logos - showing both for comparison */}
-          <div className="flex items-center gap-12">
-            {/* Option 1 - Full logo */}
-            <motion.a 
-              href="#" 
-              className="flex flex-col items-center gap-2 group"
-              whileHover={{ scale: 1.02 }}
-            >
-              <img src={logoOption1} alt="Ten Fold Logo Option 1" className="h-20 w-auto" />
-              <span className="text-sm text-muted-foreground bg-primary/20 px-3 py-1 rounded-full font-medium">Option 1</span>
-            </motion.a>
-            
-            {/* Option 2 - Icon logo */}
-            <motion.a 
-              href="#" 
-              className="flex flex-col items-center gap-2 group"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-center gap-3">
-                <img src={logoOption2} alt="Ten Fold Logo Option 2" className="h-16 w-auto" />
-                <span className="font-display text-2xl text-foreground">Ten Fold</span>
-              </div>
-              <span className="text-sm text-muted-foreground bg-primary/20 px-3 py-1 rounded-full font-medium">Option 2</span>
-            </motion.a>
-          </div>
+          {/* Logo */}
+          <motion.a 
+            href="#" 
+            className="flex items-center group"
+            whileHover={{ scale: 1.02 }}
+          >
+            <img src={logo} alt="Ten Fold Marketing" className="h-10 w-auto" />
+          </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
