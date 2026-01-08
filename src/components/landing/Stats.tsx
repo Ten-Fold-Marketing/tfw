@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+import davidChauImg from "@/assets/clients/david-chau.webp";
+import raynerTeoImg from "@/assets/clients/rayner-teo.jpeg";
 
 const stats = [
   {
@@ -23,6 +31,57 @@ const stats = [
   }
 ];
 
+const clientWins = [
+  {
+    name: "David Chau",
+    category: "Trading",
+    amount: "$1,187,184",
+    timeframe: "7 months",
+    period: "January to July",
+    image: davidChauImg,
+    data: [
+      { month: "Jan", value: 145000 },
+      { month: "Feb", value: 168000 },
+      { month: "Mar", value: 195000 },
+      { month: "Apr", value: 280000 },
+      { month: "May", value: 310000 },
+      { month: "Jun", value: 295000 },
+      { month: "Jul", value: 265000 },
+    ],
+  },
+  {
+    name: "Rayner Teo",
+    category: "Finance",
+    amount: "$58,642",
+    timeframe: "14 days",
+    period: "2 week sprint",
+    image: raynerTeoImg,
+    data: [
+      { day: "D1", value: 2100 },
+      { day: "D3", value: 5800 },
+      { day: "D5", value: 12400 },
+      { day: "D7", value: 18900 },
+      { day: "D9", value: 28500 },
+      { day: "D11", value: 42100 },
+      { day: "D14", value: 58642 },
+    ],
+  },
+  {
+    name: "AI Revolution",
+    category: "AI Mastery",
+    amount: "$81,393",
+    timeframe: "4 days",
+    period: "Launch week",
+    image: null,
+    data: [
+      { day: "D1", value: 18500 },
+      { day: "D2", value: 35200 },
+      { day: "D3", value: 58900 },
+      { day: "D4", value: 81393 },
+    ],
+  },
+];
+
 const values = [
   "Money loves speed",
   "Be your true fucking self",
@@ -30,21 +89,14 @@ const values = [
   "Have a blast making dreams come true"
 ];
 
-// Chart data - monthly performance
-const chartData = [
-  { month: "Jan", grossSales: 145000, netSales: 120000 },
-  { month: "Feb", grossSales: 168000, netSales: 145000 },
-  { month: "Mar", grossSales: 195000, netSales: 178000 },
-  { month: "Apr", grossSales: 280000, netSales: 250000 },
-  { month: "May", grossSales: 310000, netSales: 285000 },
-  { month: "Jun", grossSales: 295000, netSales: 260000 },
-  { month: "Jul", grossSales: 265000, netSales: 230000 },
-  { month: "Aug", grossSales: 220000, netSales: 195000 },
-  { month: "Sep", grossSales: 185000, netSales: 160000 },
-  { month: "Oct", grossSales: 145000, netSales: 125000 },
-  { month: "Nov", grossSales: 120000, netSales: 100000 },
-  { month: "Dec", grossSales: 95000, netSales: 78000 },
-];
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+};
 
 const AnimatedCounter = ({
   value,
@@ -85,128 +137,133 @@ const AnimatedCounter = ({
   );
 };
 
-const PerformanceChart = ({ inView }: { inView: boolean }) => {
+const AnimatedBar = ({ 
+  value, 
+  maxValue, 
+  delay, 
+  inView,
+  label
+}: { 
+  value: number; 
+  maxValue: number; 
+  delay: number; 
+  inView: boolean;
+  label: string;
+}) => {
+  const heightPercent = (value / maxValue) * 100;
+  
   return (
-    <motion.div 
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <motion.div 
+          className="flex-1 bg-muted rounded-t-sm overflow-hidden flex flex-col justify-end min-h-[120px] cursor-pointer"
+        >
+          <motion.div
+            initial={{ height: 0 }}
+            animate={inView ? { height: `${heightPercent}%` } : {}}
+            transition={{ duration: 0.8, delay, ease: "easeOut" }}
+            className="bg-gradient-to-t from-primary to-primary/70 rounded-t-sm hover:from-primary/90 hover:to-primary/60 transition-colors"
+          />
+        </motion.div>
+      </TooltipTrigger>
+      <TooltipContent side="top" className="bg-card border-border text-foreground">
+        <div className="text-center">
+          <p className="font-display text-lg">{formatCurrency(value)}</p>
+          <p className="text-xs text-muted-foreground">{label}</p>
+        </div>
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
+const ClientWinCard = ({ 
+  win, 
+  index, 
+  inView 
+}: { 
+  win: typeof clientWins[0]; 
+  index: number; 
+  inView: boolean;
+}) => {
+  const maxValue = Math.max(...win.data.map(d => d.value));
+  
+  return (
+    <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.3 }}
-      className="relative bg-card border border-border rounded-2xl p-6 md:p-8 overflow-hidden"
+      transition={{ duration: 0.6, delay: index * 0.2 }}
+      className="relative bg-card border border-border rounded-2xl p-6 md:p-8 overflow-hidden group hover:border-primary/30 transition-colors duration-300"
     >
-      {/* Subtle glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+      {/* Subtle glow on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       
       {/* Header */}
-      <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
-        <h3 className="font-display text-2xl md:text-3xl text-foreground">Performance</h3>
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-muted-foreground tracking-wide uppercase">David Chau – Trading</span>
-          <span className="px-3 py-1.5 bg-muted text-foreground text-sm rounded-full border border-border">
-            Year To Date
-          </span>
+      <div className="relative z-10 flex items-center gap-4 mb-6">
+        {win.image ? (
+          <img 
+            src={win.image} 
+            alt={win.name}
+            className="w-12 h-12 rounded-full object-cover border-2 border-border"
+          />
+        ) : (
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center border-2 border-border">
+            <span className="text-primary-foreground font-bold text-lg">
+              {win.name.split(' ').map(n => n[0]).join('')}
+            </span>
+          </div>
+        )}
+        <div>
+          <h3 className="font-display text-xl text-foreground">{win.name}</h3>
+          <span className="text-sm text-muted-foreground tracking-wide uppercase">{win.category}</span>
         </div>
       </div>
       
-      {/* Stats row */}
-      <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 pb-6 border-b border-border/50">
-        <div>
-          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Gross Sales</p>
-          <div className="flex items-baseline gap-2">
-            <span className="text-sm text-muted-foreground">Quantity</span>
-            <span className="font-display text-2xl md:text-3xl text-foreground">287</span>
-          </div>
-        </div>
-        <div>
-          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 opacity-0">Amount</p>
-          <div className="flex items-baseline gap-2">
-            <span className="text-sm text-muted-foreground">Quantity</span>
-            <span className="font-display text-2xl md:text-3xl text-foreground">$1,187,184</span>
-          </div>
-        </div>
-        <div className="col-span-2 md:col-span-1">
-          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Net Sales</p>
-          <div className="flex items-baseline gap-2">
-            <span className="text-sm text-muted-foreground">Quantity</span>
-            <span className="font-display text-2xl md:text-3xl text-foreground">275</span>
-          </div>
-        </div>
+      {/* Amount */}
+      <div className="relative z-10 mb-6">
+        <motion.span 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+          className="font-display text-4xl md:text-5xl text-foreground"
+        >
+          {win.amount}
+        </motion.span>
+        <p className="text-muted-foreground mt-1">
+          in <span className="text-foreground font-medium">{win.timeframe}</span>
+        </p>
       </div>
       
       {/* Chart */}
-      <div className="relative z-10 h-48 md:h-64">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-            <defs>
-              <linearGradient id="grossGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(148 45% 36%)" stopOpacity={0.4}/>
-                <stop offset="95%" stopColor="hsl(148 45% 36%)" stopOpacity={0}/>
-              </linearGradient>
-              <linearGradient id="netGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(45 80% 55%)" stopOpacity={0.6}/>
-                <stop offset="95%" stopColor="hsl(45 80% 55%)" stopOpacity={0}/>
-              </linearGradient>
-            </defs>
-            <XAxis 
-              dataKey="month" 
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: 'hsl(45 15% 65%)', fontSize: 12 }}
-              dy={10}
+      <div className="relative z-10 flex items-end gap-1.5 h-32 mb-4">
+        <TooltipProvider delayDuration={0}>
+          {win.data.map((point, i) => (
+            <AnimatedBar
+              key={i}
+              value={point.value}
+              maxValue={maxValue}
+              delay={index * 0.2 + i * 0.1}
+              inView={inView}
+              label={'month' in point ? point.month : point.day}
             />
-            <YAxis 
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: 'hsl(45 15% 65%)', fontSize: 12 }}
-              tickFormatter={(value) => `${value / 1000}K`}
-              dx={-10}
-            />
-            <Tooltip 
-              contentStyle={{ 
-                backgroundColor: 'hsl(165 22% 17%)', 
-                border: '1px solid hsl(165 15% 25%)',
-                borderRadius: '8px',
-                color: 'hsl(45 30% 92%)'
-              }}
-              formatter={(value: number) => [`$${value.toLocaleString()}`, '']}
-            />
-            <Area 
-              type="monotone" 
-              dataKey="grossSales" 
-              stroke="hsl(148 45% 36%)" 
-              strokeWidth={2}
-              fill="url(#grossGradient)"
-              animationDuration={2000}
-              animationBegin={inView ? 0 : 99999}
-            />
-            <Area 
-              type="monotone" 
-              dataKey="netSales" 
-              stroke="hsl(45 80% 55%)" 
-              strokeWidth={2}
-              fill="url(#netGradient)"
-              animationDuration={2000}
-              animationBegin={inView ? 300 : 99999}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+          ))}
+        </TooltipProvider>
       </div>
       
-      {/* Legend */}
-      <div className="relative z-10 flex items-center justify-center gap-8 mt-6 pt-4 border-t border-border/50">
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-sm bg-primary" />
-          <span className="text-sm text-muted-foreground">Gross Sales</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: 'hsl(45 80% 55%)' }} />
-          <span className="text-sm text-muted-foreground">Net Sales</span>
-        </div>
+      {/* X-axis labels */}
+      <div className="relative z-10 flex justify-between text-xs text-muted-foreground">
+        {win.data.map((point, i) => (
+          <span key={i} className="flex-1 text-center">
+            {'month' in point ? point.month : point.day}
+          </span>
+        ))}
       </div>
       
-      {/* Footer note */}
-      <p className="relative z-10 text-center text-xs text-muted-foreground mt-4">
-        Based on captured transactions, updated every business day.
-      </p>
+      {/* Period badge */}
+      <div className="relative z-10 mt-6 pt-4 border-t border-border/50">
+        <span className="inline-flex px-3 py-1.5 bg-muted text-foreground text-xs rounded-full border border-border tracking-wide uppercase">
+          {win.period}
+        </span>
+      </div>
     </motion.div>
   );
 };
@@ -224,25 +281,34 @@ const Stats = () => {
       <section className="section-padding bg-background relative overflow-hidden" ref={ref}>
         <div className="container-wide relative z-10">
           {/* Section label */}
-          <div className="flex items-center justify-between mb-16">
+          <div className="flex items-center justify-between mb-8">
             <span className="section-label">OUR RESULTS</span>
-            <span className="section-label">02</span>
           </div>
 
-          <div className="mb-16">
+          <div className="mb-12">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground max-w-3xl">
-              Our Principles for <span className="italic">Lasting</span> Results
+              Real Results from <span className="italic">Real</span> Partners
             </h2>
+            <p className="text-muted-foreground text-lg mt-4 max-w-2xl">
+              These are actual revenue numbers from our partners. No fluff, just results.
+            </p>
+          </div>
+
+          {/* Client Wins grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+            {clientWins.map((win, index) => (
+              <ClientWinCard key={win.name} win={win} index={index} inView={isInView} />
+            ))}
           </div>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             {stats.map((stat, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                transition={{ duration: 0.6, delay: index * 0.15 + 0.5 }}
                 className="text-center md:text-left"
               >
                 <AnimatedCounter 
@@ -255,9 +321,6 @@ const Stats = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Performance Chart */}
-          <PerformanceChart inView={isInView} />
         </div>
       </section>
 
