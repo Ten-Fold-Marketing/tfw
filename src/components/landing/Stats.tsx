@@ -73,10 +73,10 @@ const clientWins = [
     period: "Launch week",
     image: null,
     data: [
-      { day: "D1", value: 18500 },
-      { day: "D2", value: 35200 },
-      { day: "D3", value: 58900 },
-      { day: "D4", value: 81393 },
+      { day: "D1", value: 27846 },
+      { day: "D2", value: 14972 },
+      { day: "D3", value: 16384 },
+      { day: "D4", value: 22191 },
     ],
   },
 ];
