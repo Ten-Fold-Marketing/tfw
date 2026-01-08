@@ -155,16 +155,14 @@ const AnimatedBar = ({
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <motion.div 
-          className="flex-1 bg-muted rounded-t-sm overflow-hidden flex flex-col justify-end min-h-[120px] cursor-pointer"
-        >
+        <div className="flex-1 flex flex-col justify-end h-full cursor-pointer">
           <motion.div
             initial={{ height: 0 }}
             animate={inView ? { height: `${heightPercent}%` } : {}}
             transition={{ duration: 0.8, delay, ease: "easeOut" }}
-            className="bg-gradient-to-t from-primary to-primary/70 rounded-t-sm hover:from-primary/90 hover:to-primary/60 transition-colors"
+            className="w-full bg-gradient-to-t from-primary to-primary/70 rounded-sm hover:from-primary/90 hover:to-primary/60 transition-colors min-h-[4px]"
           />
-        </motion.div>
+        </div>
       </TooltipTrigger>
       <TooltipContent side="top" className="bg-card border-border text-foreground">
         <div className="text-center">
