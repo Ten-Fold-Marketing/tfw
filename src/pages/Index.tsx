@@ -2,7 +2,6 @@ import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
 import Clients from "@/components/landing/Clients";
 import Stats from "@/components/landing/Stats";
-import ClientWins from "@/components/landing/ClientWins";
 import Services from "@/components/landing/Services";
 import Comparison from "@/components/landing/Comparison";
 import Team from "@/components/landing/Team";
@@ -18,7 +17,6 @@ const Index = () => {
         <Hero />
         <Clients />
         <Stats />
-        <ClientWins />
         <Services />
         <Comparison />
         <Team />
