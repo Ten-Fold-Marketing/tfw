@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const ContactForm = () => {
   const openCalendly = () => {
-    window.open('https://calendly.com', '_blank');
+    window.open('https://book.tenfoldmarketing.com/calendar', '_blank');
   };
 
   return (

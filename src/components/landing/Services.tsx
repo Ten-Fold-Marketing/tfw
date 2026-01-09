@@ -58,8 +58,8 @@ const weeks = [
 ];
 
 const Services = () => {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const openCalendly = () => {
+    window.open('https://book.tenfoldmarketing.com/calendar', '_blank');
   };
 
   return (
@@ -85,7 +85,7 @@ const Services = () => {
           className="mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground max-w-3xl mb-6">
-            Tailored Solutions for <span className="italic">Strategic</span> Growth
+            Tailored Solutions for <span className="italic">Strategic</span> <span className="block md:inline">Growth</span>
           </h2>
           <p className="text-muted-foreground max-w-xl text-lg">
             We've got you covered from A to Z with a full-blown acquisition system.
@@ -160,8 +160,8 @@ const Services = () => {
           className="mt-16 text-center"
         >
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Button variant="hero" size="lg" onClick={scrollToContact} className="group">
-              Book A 30-Min Strategy Call
+            <Button variant="hero" size="lg" onClick={openCalendly} className="group">
+              Book My Free 30-Min Call
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
           </motion.div>
