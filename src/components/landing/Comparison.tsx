@@ -42,8 +42,8 @@ const Comparison = () => {
         </div>
 
         <div className="mb-16">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground max-w-4xl">
-            Before And After <span className="italic">Partnering</span> With Us
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground max-w-4xl">
+            Before And After <span className="italic">Partnering</span>&nbsp; With Us
           </h2>
         </div>
 
