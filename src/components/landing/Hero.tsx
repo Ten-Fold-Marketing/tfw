@@ -67,45 +67,46 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             variants={fadeUpVariant}
-            className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mt-16"
+            className="mt-16"
           >
-            {/* Description */}
+            {/* Description and CTA aligned */}
             <div className="max-w-md">
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                 We'll invest <span className="text-foreground font-medium">$50k</span> in your business so you generate an extra <span className="text-foreground font-medium">6 to 7 figures</span> in the next 60 days—with no upfront costs or risk.
               </p>
+              
+              {/* CTA Button */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-block"
+              >
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  onClick={() => scrollToSection("contact")}
+                  className="group"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </motion.div>
             </div>
 
-            {/* Scroll indicator */}
+            {/* Scroll indicator - centered below */}
             <motion.div 
-              className="hidden lg:flex items-center gap-3 text-muted-foreground cursor-pointer group"
+              className="hidden lg:flex flex-col items-center gap-2 text-muted-foreground cursor-pointer group mt-16"
               onClick={() => scrollToSection("clients")}
               whileHover={{ y: 4 }}
             >
               <motion.div 
-                className="w-8 h-8 rounded-full border border-muted-foreground/30 flex items-center justify-center group-hover:border-foreground/50 transition-colors duration-300"
+                className="w-10 h-10 rounded-full border border-muted-foreground/30 flex items-center justify-center group-hover:border-foreground/50 transition-colors duration-300"
                 animate={{ y: [0, 6, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <ArrowDown className="w-4 h-4" />
+                <ArrowDown className="w-5 h-5" />
               </motion.div>
               <span className="text-xs uppercase tracking-[0.2em] group-hover:text-foreground transition-colors duration-300">Scroll to explore</span>
-            </motion.div>
-
-            {/* CTA Button */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button 
-                variant="hero" 
-                size="lg" 
-                onClick={() => scrollToSection("contact")}
-                className="group"
-              >
-                Get Started
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
             </motion.div>
           </motion.div>
         </div>
