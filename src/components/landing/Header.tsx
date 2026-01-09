@@ -133,7 +133,16 @@ const Header = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     className="text-foreground/70 hover:text-foreground transition-colors py-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMobileMenuOpen(false);
+                      if (link.href === "#") {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      } else {
+                        const targetId = link.href.replace("#", "");
+                        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
                   >
                     {link.label}
                   </motion.a>

@@ -41,7 +41,7 @@ const Hero = () => {
       <div className="container-wide relative z-10 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
           {/* Main headline - Ivory style large typography */}
-          <div className="mb-8 overflow-hidden">
+          <div className="mb-8 overflow-visible">
             <motion.h1 
               custom={0}
               initial="hidden"
