@@ -214,11 +214,11 @@ const Clients = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-            Some Of Our <span className="italic">Clients</span>
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+            Some Of Our <span className="italic">Partners</span>
           </h2>
           <p className="text-muted-foreground max-w-xl text-lg">
-            We've had the privilege of working with incredible entrepreneurs and thought leaders across various industries.
+            We've had the privilege of working with incredible entrepreneurs and thought leaders across various industries. Here are some of them.
           </p>
         </motion.div>
       </div>
