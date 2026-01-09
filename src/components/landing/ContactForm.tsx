@@ -30,10 +30,10 @@ const ContactForm = () => {
           className="max-w-3xl"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-8">
-            Book A <span className="italic">Strategy</span> Call
+            Book My <span className="italic">Creator Assessment</span> Call
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl leading-relaxed">
-            Don't worry this is not a BS call where I'll pitch you our services. This is to see where you are and giving a personal roadmap to scale your business. And if you are interested in working together and we are a good fit, we'll see how it goes!
+            On this call, we'll assess your audience, revenue potential, and goals—then show you exactly how we'd build your monetization system from scratch. You'll see the full strategy: the lead magnets we'd create, the offers we'd build, and the automation system we'd install. This represents over $50k in team time and development that we deploy at zero cost to you. If we're both aligned, we move fast. If not, you'll know exactly what's missing and what you'd need to change to qualify. We only partner with 4 creators per month, so spots are extremely limited. Book your call now.
           </p>
 
           <motion.div 
@@ -46,7 +46,7 @@ const ContactForm = () => {
               onClick={openCalendly}
               className="group"
             >
-              Book A 30-Min Strategy Call
+              Book My Free 30-Min Call
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
           </motion.div>
