@@ -37,17 +37,17 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-16">
+    <section className="relative min-h-screen flex flex-col justify-center items-start bg-background pt-16">
       <div className="container-wide relative z-10 py-12 md:py-16">
-        <div className="max-w-6xl">
+        <div className="w-full">
           {/* Main headline - Ivory style large typography */}
-          <div className="mb-8 overflow-hidden">
+          <div className="mb-8 text-left">
             <motion.h1 
               custom={0}
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
+              className="font-display text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[7rem] text-foreground leading-[0.95] tracking-tight"
             >
               FINALLY GET PAID
             </motion.h1>
@@ -56,7 +56,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-foreground leading-[0.95] tracking-tight"
+              className="font-display text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[7rem] text-foreground leading-[0.95] tracking-tight"
             >
               what <span className="italic">you're WORTH</span>
             </motion.h1>
