@@ -69,17 +69,18 @@ const Hero = () => {
             variants={fadeUpVariant}
             className="mt-16"
           >
-            {/* Description and CTA aligned */}
-            <div className="max-w-md">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                We'll invest <span className="text-foreground font-medium">$50k</span> in your business so you generate an extra <span className="text-foreground font-medium">6 to 7 figures</span> in the next 60 days—with no upfront costs or risk.
-              </p>
+            {/* Description and CTA - side by side */}
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+              <div className="max-w-md">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  We'll invest <span className="text-foreground font-medium">$50k</span> in your business so you generate an extra <span className="text-foreground font-medium">6 to 7 figures</span> in the next 60 days—with no upfront costs or risk.
+                </p>
+              </div>
               
               {/* CTA Button */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-block"
               >
                 <Button 
                   variant="hero" 
