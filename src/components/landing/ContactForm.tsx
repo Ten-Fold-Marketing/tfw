@@ -30,10 +30,13 @@ const ContactForm = () => {
           className="max-w-3xl"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-8">
-            Book My <span className="italic">Creator Assessment</span>{" "}Call
+            Book My <span className="italic">Creator Assessment</span>&nbsp; Call
           </h2>
+          <p className="text-lg text-muted-foreground mb-6 max-w-2xl leading-relaxed">
+            On this call, we'll assess your audience, revenue potential, and goals—then show you exactly how we'd build your monetization system from scratch. You'll see the full strategy: the lead magnets we'd create, the offers we'd build, and the automation system we'd install. This represents over $50k in team time and development that we deploy at zero cost to you.
+          </p>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl leading-relaxed">
-            On this call, we'll assess your audience, revenue potential, and goals—then show you exactly how we'd build your monetization system from scratch. You'll see the full strategy: the lead magnets we'd create, the offers we'd build, and the automation system we'd install. This represents over $50k in team time and development that we deploy at zero cost to you. If we're both aligned, we move fast. If not, you'll know exactly what's missing and what you'd need to change to qualify. We only partner with 4 creators per month, so spots are extremely limited. Book your call now.
+            If we're both aligned, we move fast. If not, you'll know exactly what's missing and what you'd need to change to qualify. We only partner with 4 creators per month, so spots are extremely limited. Book your call now.
           </p>
 
           <motion.div 
