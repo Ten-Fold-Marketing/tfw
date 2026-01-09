@@ -61,7 +61,7 @@ const Comparison = () => {
               <div className="w-10 h-10 rounded-full bg-destructive/20 flex items-center justify-center">
                 <X className="w-5 h-5 text-destructive" />
               </div>
-              <h3 className="font-display text-2xl text-foreground">Before</h3>
+              <h3 className="font-display text-2xl text-foreground">Before...</h3>
             </div>
             <ul className="space-y-5">
               {beforeItems.map((item, index) => (
@@ -87,7 +87,7 @@ const Comparison = () => {
               <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center">
                 <Check className="w-5 h-5 text-foreground" />
               </div>
-              <h3 className="font-display text-2xl text-foreground">After</h3>
+              <h3 className="font-display text-2xl text-foreground">After...</h3>
             </div>
             <ul className="space-y-5">
               {afterItems.map((item, index) => (
