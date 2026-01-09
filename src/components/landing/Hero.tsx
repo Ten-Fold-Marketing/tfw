@@ -39,7 +39,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-16">
       <div className="container-wide relative z-10 py-12 md:py-16">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl">
           {/* Main headline - Ivory style large typography */}
           <div className="mb-8 overflow-hidden">
             <motion.h1 
