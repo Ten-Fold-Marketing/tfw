@@ -203,7 +203,7 @@ const Clients = () => {
           viewport={{ once: true }}
           className="flex items-center justify-between mb-16"
         >
-          <span className="section-label">Selected Clients</span>
+          <span className="section-label">Partners</span>
           <span className="section-label">01</span>
         </motion.div>
         
