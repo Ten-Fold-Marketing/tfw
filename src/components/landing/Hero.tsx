@@ -67,7 +67,7 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             variants={fadeUpVariant}
-            className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mt-16"
+            className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 mt-16"
           >
             {/* Description */}
             <div className="max-w-md">
@@ -76,26 +76,11 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Scroll indicator */}
-            <motion.div 
-              className="hidden lg:flex items-center gap-3 text-muted-foreground cursor-pointer group"
-              onClick={() => scrollToSection("clients")}
-              whileHover={{ y: 4 }}
-            >
-              <motion.div 
-                className="w-8 h-8 rounded-full border border-muted-foreground/30 flex items-center justify-center group-hover:border-foreground/50 transition-colors duration-300"
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <ArrowDown className="w-4 h-4" />
-              </motion.div>
-              <span className="text-xs uppercase tracking-[0.2em] group-hover:text-foreground transition-colors duration-300">Scroll to explore</span>
-            </motion.div>
-
             {/* CTA Button */}
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              className="shrink-0"
             >
               <Button 
                 variant="hero" 
@@ -109,6 +94,24 @@ const Hero = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll indicator - centered at bottom */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className="hidden lg:flex flex-col items-center gap-3 text-muted-foreground cursor-pointer group mt-16"
+          onClick={() => scrollToSection("clients")}
+        >
+          <motion.div 
+            className="w-12 h-12 rounded-full border border-muted-foreground/30 flex items-center justify-center group-hover:border-foreground/50 transition-colors duration-300"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowDown className="w-5 h-5" />
+          </motion.div>
+          <span className="text-xs uppercase tracking-[0.2em] group-hover:text-foreground transition-colors duration-300">Scroll to explore</span>
+        </motion.div>
       </div>
 
       {/* Subtle background gradient */}
