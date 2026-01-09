@@ -67,7 +67,7 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             variants={fadeUpVariant}
-            className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 mt-16"
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 sm:gap-8 mt-16"
           >
             {/* Description */}
             <div className="max-w-md">
