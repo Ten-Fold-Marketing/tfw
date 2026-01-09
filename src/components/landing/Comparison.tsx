@@ -49,35 +49,9 @@ const Comparison = () => {
 
         {/* Comparison grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-24">
-          {/* AFTER Section */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-card rounded-3xl p-8 md:p-10 border border-border"
-          >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center">
-                <Check className="w-5 h-5 text-foreground" />
-              </div>
-              <h3 className="font-display text-2xl text-foreground">Instead...</h3>
-            </div>
-            <ul className="space-y-5">
-              {afterItems.map((item, index) => (
-                <li key={index} className="flex items-start gap-4">
-                  <div className="w-5 h-5 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-foreground" />
-                  </div>
-                  <span className="text-foreground text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
           {/* BEFORE Section */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
@@ -87,7 +61,7 @@ const Comparison = () => {
               <div className="w-10 h-10 rounded-full bg-destructive/20 flex items-center justify-center">
                 <X className="w-5 h-5 text-destructive" />
               </div>
-              <h3 className="font-display text-2xl text-foreground">No more...</h3>
+              <h3 className="font-display text-2xl text-foreground">Before</h3>
             </div>
             <ul className="space-y-5">
               {beforeItems.map((item, index) => (
@@ -96,6 +70,32 @@ const Comparison = () => {
                     <X className="w-3 h-3 text-destructive" />
                   </div>
                   <span className="text-muted-foreground text-lg line-through decoration-muted-foreground/30">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* AFTER Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-card rounded-3xl p-8 md:p-10 border border-border"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center">
+                <Check className="w-5 h-5 text-foreground" />
+              </div>
+              <h3 className="font-display text-2xl text-foreground">After</h3>
+            </div>
+            <ul className="space-y-5">
+              {afterItems.map((item, index) => (
+                <li key={index} className="flex items-start gap-4">
+                  <div className="w-5 h-5 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-foreground" />
+                  </div>
+                  <span className="text-foreground text-lg">{item}</span>
                 </li>
               ))}
             </ul>
