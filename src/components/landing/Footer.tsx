@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import tenfoldLogo from "@/assets/tenfold-logo-new.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,8 +19,7 @@ const Footer = () => {
             className="flex items-center gap-2 group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-foreground text-lg font-display transition-transform duration-300 group-hover:rotate-45">✦</span>
-            <span className="font-display text-lg text-foreground">Ten Fold</span>
+            <img src={tenfoldLogo} alt="Ten Fold" className="h-8 w-auto" />
           </motion.div>
 
           {/* Links */}
