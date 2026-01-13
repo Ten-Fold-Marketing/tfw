@@ -19,7 +19,7 @@ const Footer = () => {
             className="flex items-center gap-2 group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
-            <img src={tenfoldLogo} alt="Ten Fold" className="h-8 w-auto" />
+            <img src={tenfoldLogo} alt="Ten Fold" width={92} height={32} className="h-8 w-auto" loading="lazy" decoding="async" />
           </motion.div>
 
           {/* Links */}

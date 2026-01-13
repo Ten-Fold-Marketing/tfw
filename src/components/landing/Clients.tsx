@@ -259,8 +259,11 @@ const Clients = () => {
                 <img 
                   src={client.image} 
                   alt={client.name}
+                  width={380}
+                  height={285}
                   className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-110 grayscale group-hover:grayscale-0"
                   loading="lazy"
+                  decoding="async"
                   draggable={false}
                 />
               </div>
