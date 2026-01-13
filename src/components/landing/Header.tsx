@@ -48,7 +48,7 @@ const Header = () => {
             className="flex items-center group"
             whileHover={{ scale: 1.02 }}
           >
-            <img src={logo} alt="Ten Fold Marketing" className="h-14 w-auto" />
+            <img src={logo} alt="Ten Fold Marketing" width={160} height={56} className="h-14 w-auto" />
           </motion.a>
 
           {/* Desktop Navigation */}

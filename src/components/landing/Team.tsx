@@ -77,7 +77,11 @@ const Team = () => {
                 <img 
                   src={member.image} 
                   alt={member.name}
+                  width={300}
+                  height={400}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
