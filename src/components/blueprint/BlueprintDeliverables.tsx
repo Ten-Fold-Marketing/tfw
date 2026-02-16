@@ -1,8 +1,6 @@
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Users, Lightbulb, Target, DollarSign, Layout, Cpu, GitBranch, Megaphone, Shield } from "lucide-react";
-
-const CHECKOUT_URL = "#";
+import { Users, Lightbulb, Target, DollarSign, Package, Wrench, GitBranch, Megaphone, Star, ShieldCheck } from "lucide-react";
+import CTAButton from "./CTAButton";
+import AvatarStrip from "./AvatarStrip";
 
 const deliverables = [
   {
@@ -26,12 +24,12 @@ const deliverables = [
     desc: "Should you charge $27, $97, $297, or $997? I'll tell you WHY based on your audience and goals.",
   },
   {
-    icon: Layout,
+    icon: Package,
     title: "Your Product Structure",
     desc: "Exactly what modules, lessons, templates, or resources to include. How long. What format.",
   },
   {
-    icon: Cpu,
+    icon: Wrench,
     title: "Your Tech Stack",
     desc: "Payment processor. Delivery platform. Email tool. Landing page builder. Exact tools named.",
   },
@@ -47,54 +45,59 @@ const deliverables = [
   },
 ];
 
-const BlueprintDeliverables = () => {
-  return (
-    <section className="section-padding">
-      <div className="container-wide">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="section-label mb-3">HERE'S WHAT YOU'LL GET WITH YOUR</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground">
-            OFFER BLUEPRINT
-          </h2>
-        </motion.div>
+const BlueprintDeliverables = () => (
+  <section className="py-16 sm:py-24 bg-secondary/30">
+    <div className="container max-w-6xl mx-auto px-4">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-2">
+        HERE'S WHAT YOU'LL GET WITH YOUR
+      </h2>
+      <h3 className="text-center mb-12">
+        <span className="bg-gradient-gold text-primary-foreground px-4 py-2 rounded text-xl sm:text-2xl font-black">
+          OFFER BLUEPRINT
+        </span>
+      </h3>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-          {deliverables.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="card-premium p-6"
-            >
-              <item.icon className="w-8 h-8 text-primary mb-4" />
-              <h3 className="font-display text-xl text-foreground mb-2">{item.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        {deliverables.map((item, i) => (
+          <div key={i} className="bg-card rounded-xl p-5 border border-border shadow-card hover:border-primary/30 transition-colors">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+              <item.icon className="w-5 h-5 text-primary" />
+            </div>
+            <h4 className="font-bold text-foreground text-sm mb-1">{item.title}</h4>
+            <p className="text-muted-foreground text-xs">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <CTAButton
+        text="YES! I WANT MY BLUEPRINT NOW — $97"
+        subtext="Get Your Custom Blueprint In 24 Hours Or Less"
+      />
+
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8">
+        <div className="inline-flex items-center gap-2 border-2 border-dashed border-primary/30 rounded-xl px-4 py-3">
+          <ShieldCheck className="w-8 h-8 text-primary" />
+          <div>
+            <p className="font-bold text-foreground text-sm">MONEY BACK GUARANTEE</p>
+            <p className="text-muted-foreground text-xs">Total Clarity Guaranteed</p>
+          </div>
         </div>
-
-        {/* CTA */}
-        <div className="text-center space-y-3">
-          <Button variant="hero" size="xl" className="text-lg px-12 glow-primary" asChild>
-            <a href={CHECKOUT_URL}>YES! I WANT MY BLUEPRINT NOW — $97</a>
-          </Button>
-          <p className="text-sm text-muted-foreground">Get Your Custom Blueprint In 24 Hours Or Less</p>
-          <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5 text-primary" /> MONEY BACK GUARANTEE</span>
-            <span>Total Clarity Guaranteed</span>
-            <span>Trusted by 500+ Creators</span>
+        <div className="flex items-center gap-2">
+          <AvatarStrip />
+          <div>
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3 h-3 fill-primary text-primary" />
+              ))}
+            </div>
+            <span className="text-muted-foreground text-xs font-semibold uppercase">
+              Trusted by 500+ Creators
+            </span>
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default BlueprintDeliverables;
