@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -9,74 +8,59 @@ import {
 const faqs = [
   {
     q: "What exactly do I get for $97?",
-    a: "You get a fully personalized monetization blueprint covering your product idea, core promise, pricing model, product structure, tech stack, funnel map, and selling strategy — all tailored to your audience and delivered within 24 hours.",
+    a: "A fully custom Offer Blueprint delivered to your inbox within 24 hours. It covers: your product idea, core promise, pricing model, product structure, delivery model, exact software/tools, funnel map, and a selling strategy mapped to your specific platform. Not a template. Not generic advice. A custom plan built around YOUR audience and YOUR content.",
   },
   {
     q: "Do I have to get on a call?",
-    a: "No calls needed. You fill out a simple 10-minute form, and I build your blueprint from there. Everything is delivered asynchronously.",
+    a: "No. Zero calls. You fill out an intake form (takes about 10 minutes), I build your blueprint, and it arrives in your inbox within 24 hours. That's the whole process.",
   },
   {
     q: "What if my audience is small?",
-    a: "The blueprint works for creators with as few as 500 engaged followers. I tailor the strategy to your current audience size and growth trajectory.",
+    a: "Then this is arguably MORE valuable for you. You don't need a huge audience to monetize. You need the right offer for the people who already pay attention to you. I've seen creators with 800 followers make more than creators with 80,000 — because they had the right product and the right promise.",
   },
   {
     q: "What if I already have a product but it's not selling?",
-    a: "Perfect — I'll analyze what's not working and rebuild your offer architecture, pricing, and funnel to help you start converting.",
+    a: "Even better. I'll look at what you have, diagnose why it's not converting — wrong audience? wrong promise? wrong price? wrong funnel? — and either reposition it or recommend an entirely different offer. Same price, same 24-hour delivery.",
   },
   {
     q: "Is this a template I fill in myself?",
-    a: "No. This is a done-for-you blueprint. I personally analyze your situation and write out every section of your monetization plan.",
+    a: "No. This is built FOR you. I personally review your intake form and create a custom blueprint based on your specific situation. Two creators could buy this on the same day and get completely different plans.",
   },
   {
     q: "What platforms does this work for?",
-    a: "YouTube, Instagram, TikTok, podcasts, newsletters, LinkedIn, Twitter/X — any platform where you have an engaged audience.",
+    a: "YouTube, Instagram, TikTok, X/Twitter, podcasts, email newsletters, LinkedIn, a blog — wherever your audience lives. Your selling strategy is mapped specifically to the platforms you're on.",
   },
   {
     q: "What if I don't know what niche I'm in?",
-    a: "That's okay. Based on the info you share about your content and audience, I'll help identify your most monetizable niche and build around it.",
+    a: "If you're posting content and people are responding to it, you have a niche — you just might not have labeled it yet. The blueprint will clarify that for you. But if you truly have no content and no audience, this isn't the right fit yet.",
   },
   {
     q: "What if I'm not happy with the blueprint?",
-    a: "You're covered by our Total Clarity Guarantee. If you don't feel you got clear, actionable value, we'll refund you — no questions asked.",
+    a: "If it doesn't give you complete clarity on what to sell, how to price it, how to build it, and how to sell it — reach out and I'll make it right. I'm not interested in keeping your $97 if I can't deliver a plan that's worth 10x that.",
   },
 ];
 
-const BlueprintFAQ = () => {
-  return (
-    <section className="section-padding">
-      <div className="container-narrow">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-display text-4xl md:text-5xl text-foreground">
-            Questions You're Probably Asking
-          </h2>
-        </motion.div>
+const BlueprintFAQ = () => (
+  <section className="py-16 sm:py-20 bg-secondary/30">
+    <div className="container max-w-3xl mx-auto px-4">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-10">
+        Questions You're <span className="text-gradient-gold">Probably Asking</span>
+      </h2>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Accordion type="single" collapsible className="max-w-2xl mx-auto">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                <AccordionTrigger className="text-left text-foreground hover:no-underline font-medium">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+      <Accordion type="single" collapsible className="space-y-3">
+        {faqs.map((faq, i) => (
+          <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-lg px-5">
+            <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline">
+              {faq.q}
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              {faq.a}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
+  </section>
+);
 
 export default BlueprintFAQ;

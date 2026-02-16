@@ -1,102 +1,96 @@
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Star } from "lucide-react";
+import CTAButton from "./CTAButton";
+import raynerImg from "@/assets/clients/rayner-teo.jpeg";
+import houstonImg from "@/assets/clients/houston-golden.jpeg";
+import lukeImg from "@/assets/clients/luke-bassist.jpeg";
+import andrewImg from "@/assets/clients/andrew-rickli.jpeg";
+import marisaImg from "@/assets/clients/marisa-peer.jpeg";
+import anthonyImg from "@/assets/clients/anthony-miranda.png";
 
-import raynerTeo from "@/assets/clients/rayner-teo.jpeg";
-import lukeBassist from "@/assets/clients/luke-bassist.jpeg";
-import houstonTrevin from "@/assets/clients/houston-trevin.jpeg";
-import andrewRickli from "@/assets/clients/andrew-rickli.jpeg";
-import marisaPeer from "@/assets/clients/marisa-peer.jpeg";
-import anthonyMiranda from "@/assets/clients/anthony-miranda.png";
-
-const CHECKOUT_URL = "#";
-
-const reviews = [
+const moreTestimonials = [
   {
     name: "Rayner Teo",
     title: "8-Figure Trading Mentor",
-    photo: raynerTeo,
     text: "Fantastic on giving detailed and insightful advice for my offer. He took the time to really understand my pain points, and what I was looking to accomplish. Walked away with a game plan I could execute. Highly recommend.",
+    img: raynerImg,
   },
   {
     name: "Luke (Become A Bassist)",
     title: "Music Entrepreneur",
-    photo: lukeBassist,
     text: "As a newbie to monetizing my audience, I got overwhelmed. The blueprint was able to break it down for me. I finally have clarity around what I need to do NOW to start building out my first product.",
+    img: lukeImg,
   },
   {
     name: "Houston Golden",
     title: "7-Figure LinkedIn Expert",
-    photo: houstonTrevin,
     text: "Had an amazing experience with this blueprint! It definitely delivers. I left having more clarity about my offers. Asked all the right questions and then built out my whole offer architecture from front to back.",
+    img: houstonImg,
   },
   {
     name: "Andrew Rickli",
     title: "8-Figure Trader",
-    photo: andrewRickli,
     text: "Great experience with my blueprint for a trading community. One of the most clever ways of building a community, making money, and growing. Gave me a clear plan and solid direction for next steps.",
+    img: andrewImg,
   },
   {
     name: "Marisa Peer",
     title: "Best-Selling Author",
-    photo: marisaPeer,
     text: "So glad I got this. It helped me identify empty spots in my funnel and gain overall clarity. The blueprint is exactly what I've been looking for. Worth every cent.",
+    img: marisaImg,
   },
   {
     name: "Anthony Miranda",
     title: "Content Creator · 814k YouTube",
-    photo: anthonyMiranda,
     text: "Just got my blueprint and I had so many questions about what products to sell. By the end, I had a full strategy that I can't wait to implement. Super helpful and much appreciated.",
+    img: anthonyImg,
   },
 ];
 
-const BlueprintMoreReviews = () => {
-  return (
-    <section className="section-padding bg-gradient-section">
-      <div className="container-wide">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="section-label mb-3">YES WE HAVE EVEN MORE REVIEWS FROM</p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground">
-            HAPPY CUSTOMERS
-          </h2>
-          <p className="text-muted-foreground mt-4">Here's What People Are Saying About Their Custom Blueprints…</p>
-        </motion.div>
+const BlueprintMoreReviews = () => (
+  <section className="py-16 sm:py-20">
+    <div className="container max-w-6xl mx-auto px-4">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-2">
+        YES WE HAVE EVEN MORE REVIEWS FROM
+      </h2>
+      <h3 className="text-center mb-4">
+        <span className="bg-gradient-gold text-primary-foreground px-4 py-2 rounded text-xl sm:text-2xl font-black">
+          HAPPY CUSTOMERS
+        </span>
+      </h3>
+      <p className="text-muted-foreground text-center mb-10">
+        Here's What People Are Saying About Their Custom Blueprints…
+      </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-          {reviews.map((r, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.04 }}
-              className="card-premium p-6"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <img src={r.photo} alt={r.name} className="w-12 h-12 rounded-full object-cover" loading="lazy" />
-                <div>
-                  <p className="font-medium text-foreground text-sm">{r.name}</p>
-                  <p className="text-xs text-muted-foreground">{r.title}</p>
-                </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        {moreTestimonials.map((t, i) => (
+          <div key={i} className="bg-card border border-border rounded-xl p-5">
+            <div className="flex items-center gap-3 mb-3">
+              <img
+                src={t.img}
+                alt={t.name}
+                className="w-10 h-10 rounded-full object-cover"
+              />
+              <div>
+                <p className="font-bold text-foreground text-sm">{t.name}</p>
+                <p className="text-muted-foreground text-xs">{t.title}</p>
               </div>
-              <p className="text-sm text-foreground/80 leading-relaxed">{r.text}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="text-center space-y-3">
-          <Button variant="hero" size="xl" className="text-lg px-12 glow-primary" asChild>
-            <a href={CHECKOUT_URL}>YES! I WANT MY BLUEPRINT NOW — $97</a>
-          </Button>
-          <p className="text-sm text-muted-foreground">Get Your Custom Blueprint In 24 Hours Or Less</p>
-        </div>
+            </div>
+            <div className="flex mb-2">
+              {[...Array(5)].map((_, j) => (
+                <Star key={j} className="w-4 h-4 fill-primary text-primary" />
+              ))}
+            </div>
+            <p className="text-foreground/80 text-sm">{t.text}</p>
+          </div>
+        ))}
       </div>
-    </section>
-  );
-};
+
+      <CTAButton
+        text="YES! I WANT MY BLUEPRINT NOW — $97"
+        subtext="Get Your Custom Blueprint In 24 Hours Or Less"
+      />
+    </div>
+  </section>
+);
 
 export default BlueprintMoreReviews;

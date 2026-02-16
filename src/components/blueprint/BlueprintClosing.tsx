@@ -1,92 +1,75 @@
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Check, Shield } from "lucide-react";
+import { Star, ShieldCheck } from "lucide-react";
+import CTAButton from "./CTAButton";
+import AvatarStrip from "./AvatarStrip";
 
-const CHECKOUT_URL = "#";
+const benefits = [
+  "Know exactly what to sell — no more guessing",
+  "Have a clear pricing strategy backed by logic",
+  "Launch with the right tools and the right funnel",
+];
 
-const BlueprintClosing = () => {
-  return (
-    <>
-      {/* Final Pitch */}
-      <section className="section-padding bg-gradient-section">
-        <div className="container-narrow">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground">
-              AND NOW I'M GIVING IT ALL TO YOU…
-            </h2>
-          </motion.div>
+const BlueprintClosing = () => (
+  <section className="py-16 sm:py-20">
+    <div className="container max-w-4xl mx-auto px-4">
+      {/* White card */}
+      <div className="bg-foreground/95 rounded-2xl p-8 sm:p-12 text-background">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-6">
+          AND NOW I'M GIVING IT ALL TO YOU…
+        </h2>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto space-y-5 text-muted-foreground leading-relaxed"
-          >
-            <p>Most creators aren't struggling because they're lazy.</p>
-            <p className="text-foreground font-medium">They're stuck because no one's ever just told them exactly what to sell.</p>
-            <p>Everyone's pushing frameworks, playbooks, or another 6-hour course that leaves you with more questions than answers.</p>
-            <p className="text-foreground font-medium">But that's not what this is…</p>
-            <p>The 24-Hour Offer Blueprint is a done for you blueprint built around your audience.</p>
-            <p>You'll get a proven monetization path tailored specifically for your market, your content, and your growth goals — delivered in 24 hours or less.</p>
-            <p className="text-foreground font-medium">So you can…</p>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground/90">Know exactly what to sell — no more guessing</span></div>
-              <div className="flex items-start gap-3"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground/90">Have a clear pricing strategy backed by logic</span></div>
-              <div className="flex items-start gap-3"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground/90">Launch with the right tools and the right funnel</span></div>
+        <div className="space-y-4 text-background/80 text-base max-w-3xl mx-auto mb-6">
+          <p>Most creators aren't struggling because they're lazy.</p>
+          <p>They're stuck because no one's ever just told them exactly what to sell.</p>
+          <p>Everyone's pushing frameworks, playbooks, or another 6-hour course that leaves you with more questions than answers.</p>
+          <p>But that's not what this is…</p>
+          <p>
+            The 24-Hour Offer Blueprint is a <strong className="text-background">done for you</strong> blueprint built around your audience.
+          </p>
+          <p>You'll get a proven monetization path tailored specifically for your market, your content, and your growth goals — delivered in 24 hours or less.</p>
+          <p>So you can…</p>
+        </div>
+
+        <div className="space-y-3 max-w-xl mx-auto mb-6">
+          {benefits.map((b, i) => (
+            <div key={i} className="flex items-start gap-3">
+              <span className="shrink-0 w-6 h-6 rounded bg-primary/20 flex items-center justify-center text-primary text-sm font-bold mt-0.5">
+                ✓
+              </span>
+              <span className="text-background/80">{b}</span>
             </div>
-            <p>All without wasting weeks "figuring it out" yourself.</p>
-          </motion.div>
+          ))}
+        </div>
 
-          <div className="text-center mt-12 space-y-3">
-            <Button variant="hero" size="xl" className="text-lg px-12 glow-primary" asChild>
-              <a href={CHECKOUT_URL}>YES! I WANT MY BLUEPRINT NOW — $97</a>
-            </Button>
-            <p className="text-sm text-muted-foreground">Get Your Custom Blueprint In 24 Hours Or Less</p>
-            <p className="text-xs text-muted-foreground">Trusted by 500+ Creators</p>
+        <p className="text-background/80 text-center mb-8">
+          All without wasting weeks "figuring it out" yourself.
+        </p>
+
+        <CTAButton
+          text="YES! I WANT MY BLUEPRINT NOW — $97"
+          subtext="Get Your Custom Blueprint In 24 Hours Or Less"
+        />
+      </div>
+
+      {/* Social proof below card */}
+      <div className="flex flex-col items-center mt-8 gap-2">
+        <div className="flex items-center gap-2">
+          <AvatarStrip />
+          <div className="flex">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-3 h-3 fill-primary text-primary" />
+            ))}
           </div>
+          <span className="text-muted-foreground text-xs font-semibold uppercase">
+            Trusted by 500+ Creators
+          </span>
         </div>
-      </section>
-
-      {/* Limited Time Offer */}
-      <section className="section-padding">
-        <div className="container-narrow text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <p className="section-label">500+ BLUEPRINTS BUILT AND COUNTING</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground">
-              LIMITED TIME SPECIAL — GET YOUR PERSONALIZED BLUEPRINT FOR JUST $97
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              The Only Done-For-You Solution To Get Your Monetization Plan In 24 Hours or Less…
-            </p>
-            <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-              I've spent years architecting offers and building monetization plans for creators — which has given me the ability to give you a winning blueprint for your market almost instantly after completing your form!
-            </p>
-
-            <div className="pt-4 space-y-3">
-              <Button variant="hero" size="xl" className="text-lg px-12 glow-primary" asChild>
-                <a href={CHECKOUT_URL}>YES! I WANT MY BLUEPRINT NOW — $97</a>
-              </Button>
-              <p className="text-sm text-muted-foreground">Get Your Custom Blueprint In 24 Hours Or Less</p>
-              <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5 text-primary" /> MONEY BACK GUARANTEE</span>
-                <span>Trusted by 500+ Creators</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </>
-  );
-};
+        <p className="text-foreground font-black text-xl sm:text-2xl text-center mt-4">
+          <span className="bg-gradient-gold text-primary-foreground px-2 py-0.5 rounded">500+ BLUEPRINTS</span>{" "}
+          BUILT AND COUNTING
+        </p>
+      </div>
+    </div>
+  </section>
+);
 
 export default BlueprintClosing;
