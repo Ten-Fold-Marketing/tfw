@@ -49,7 +49,7 @@ const BlueprintFAQ = () => (
 
       <Accordion type="single" collapsible className="space-y-3">
         {faqs.map((faq, i) => (
-          <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-lg px-5 overflow-hidden">
+          <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-[5px] px-5 overflow-hidden">
             <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline text-sm sm:text-base">
               {faq.q}
             </AccordionTrigger>
