@@ -24,7 +24,7 @@ const Footer = () => {
           </motion.div>
 
           {/* Links */}
-          <nav className="flex gap-8 text-sm">
+          <nav className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm">
             <motion.div whileHover={{ y: -2 }}>
               <Link 
                 to="/privacy-policy-terms-conditions" 
@@ -39,6 +39,22 @@ const Footer = () => {
                 className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
               >
                 Terms
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ y: -2 }}>
+              <Link 
+                to="/privacy-policy-terms-conditions" 
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
+              >
+                Refund Policy
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ y: -2 }}>
+              <Link 
+                to="/privacy-policy-terms-conditions" 
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
+              >
+                Cancellation Policy
               </Link>
             </motion.div>
           </nav>
