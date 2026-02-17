@@ -9,6 +9,7 @@ import BlueprintClosing from "@/components/blueprint/BlueprintClosing";
 import BlueprintFinalCTA from "@/components/blueprint/BlueprintFinalCTA";
 import BlueprintMoreReviews from "@/components/blueprint/BlueprintMoreReviews";
 import BlueprintFAQ from "@/components/blueprint/BlueprintFAQ";
+import Footer from "@/components/landing/Footer";
 
 const OfferBlueprint = () => (
   <main className="min-h-screen bg-background">
@@ -23,6 +24,7 @@ const OfferBlueprint = () => (
     <BlueprintFinalCTA />
     <BlueprintMoreReviews />
     <BlueprintFAQ />
+    <Footer />
   </main>
 );
 
