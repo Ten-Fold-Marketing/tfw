@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import tenfoldLogo from "@/assets/tenfold-logo-new.png";
 
 const Footer = () => {
@@ -24,20 +25,22 @@ const Footer = () => {
 
           {/* Links */}
           <nav className="flex gap-8 text-sm">
-            <motion.a 
-              href="#" 
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
-              whileHover={{ y: -2 }}
-            >
-              Privacy Policy
-            </motion.a>
-            <motion.a 
-              href="#" 
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
-              whileHover={{ y: -2 }}
-            >
-              Terms
-            </motion.a>
+            <motion.div whileHover={{ y: -2 }}>
+              <Link 
+                to="/privacy-policy-terms-conditions" 
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
+              >
+                Privacy Policy
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ y: -2 }}>
+              <Link 
+                to="/privacy-policy-terms-conditions" 
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline py-1"
+              >
+                Terms
+              </Link>
+            </motion.div>
           </nav>
 
           {/* Copyright */}
