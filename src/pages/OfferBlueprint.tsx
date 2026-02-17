@@ -14,11 +14,16 @@ import Footer from "@/components/landing/Footer";
 
 const OfferBlueprint = () => {
   useEffect(() => {
+    let attempts = 0;
     function trackUmami() {
+      attempts++;
       if ((window as any).umami) {
         (window as any).umami.track("offerblueprint-lander");
-      } else {
+        console.log("[Umami] offerblueprint-lander event fired");
+      } else if (attempts < 50) {
         setTimeout(trackUmami, 100);
+      } else {
+        console.warn("[Umami] script not available after 5s — domain mismatch or blocked");
       }
     }
     trackUmami();
