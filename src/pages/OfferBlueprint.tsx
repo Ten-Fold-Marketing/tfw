@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import BlueprintHero from "@/components/blueprint/BlueprintHero";
 import BlueprintWhatIsIt from "@/components/blueprint/BlueprintWhatIsIt";
 import BlueprintDeliverables from "@/components/blueprint/BlueprintDeliverables";
@@ -11,7 +12,19 @@ import BlueprintMoreReviews from "@/components/blueprint/BlueprintMoreReviews";
 import BlueprintFAQ from "@/components/blueprint/BlueprintFAQ";
 import Footer from "@/components/landing/Footer";
 
-const OfferBlueprint = () => (
+const OfferBlueprint = () => {
+  useEffect(() => {
+    function trackUmami() {
+      if ((window as any).umami) {
+        (window as any).umami.track("offerblueprint-lander");
+      } else {
+        setTimeout(trackUmami, 100);
+      }
+    }
+    trackUmami();
+  }, []);
+
+  return (
   <main className="min-h-screen bg-background">
     <BlueprintHero />
     <BlueprintWhatIsIt />
@@ -26,6 +39,7 @@ const OfferBlueprint = () => (
     <BlueprintFAQ />
     <Footer />
   </main>
-);
+  );
+};
 
 export default OfferBlueprint;
