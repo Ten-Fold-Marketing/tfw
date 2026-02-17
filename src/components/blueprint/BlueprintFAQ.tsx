@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "Do I have to get on a call?",
-    a: "No. Zero calls. You fill out an intake form (takes about 10 minutes), I build your blueprint, and it arrives in your inbox within 24 hours. That's the whole process.",
+    a: "No. Zero calls. You fill out an intake form (takes about 5 minutes), I build your blueprint, and it arrives in your inbox within 24 hours. That's the whole process.",
   },
   {
     q: "What if my audience is small?",
