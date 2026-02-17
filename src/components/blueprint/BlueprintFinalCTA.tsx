@@ -8,7 +8,7 @@ const BlueprintFinalCTA = () => (
     <div className="absolute inset-0 bg-gradient-dark pointer-events-none" />
     <div className="container max-w-5xl mx-auto px-4 relative z-10">
       <p className="text-primary text-center text-xs sm:text-sm font-semibold uppercase tracking-widest mb-4">
-        LIMITED TIME SPECIAL — GET YOUR PERSONALIZED BLUEPRINT FOR JUST $97
+        LIMITED TIME SPECIAL — GET YOUR PERSONALIZED BLUEPRINT FOR JUST $47
       </p>
 
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-4">
@@ -33,7 +33,7 @@ const BlueprintFinalCTA = () => (
       </div>
 
       <CTAButton
-        text="YES! I WANT MY BLUEPRINT NOW — $97"
+        text="YES! I WANT MY BLUEPRINT NOW — $47"
         subtext="Get Your Custom Blueprint In 24 Hours Or Less"
       />
 

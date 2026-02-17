@@ -12,7 +12,7 @@ const testimonials = [
   {
     name: "Rayner Teo",
     title: "8-Figure Trading Mentor · 2.2M YouTube Subscribers",
-    text: "Got my blueprint and within a week I had my first digital product live. The clarity on pricing alone was worth 10x the $97. Generated $40,851 in just 14 days after implementing the strategy.",
+    text: "Got my blueprint and within a week I had my first digital product live. The clarity on pricing alone was worth 10x the $47. Generated $40,851 in just 14 days after implementing the strategy.",
     img: raynerImg,
   },
   {
@@ -54,7 +54,7 @@ const testimonials = [
   {
     name: "Anthony Miranda",
     title: "Content Creator · 814k YouTube Subscribers",
-    text: "Implemented one thing from the blueprint — added an upsell — and my average order value went from $97 to $150. Take rate has been 33% for 2 weeks straight.",
+    text: "Implemented one thing from the blueprint — added an upsell — and my average order value went from $47 to $150. Take rate has been 33% for 2 weeks straight.",
     img: anthonyImg,
   },
   {

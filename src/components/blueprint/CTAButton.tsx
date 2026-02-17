@@ -6,7 +6,7 @@ interface CTAButtonProps {
 }
 
 const CTAButton = ({
-  text = "GET YOUR 24-HOUR OFFER BLUEPRINT — $97",
+  text = "GET YOUR 24-HOUR OFFER BLUEPRINT — $47",
   subtext,
 }: CTAButtonProps) => (
   <div className="flex flex-col items-center gap-3">

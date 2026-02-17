@@ -32,7 +32,7 @@ const HeroSection = () => (
       </h1>
 
       <p className="text-muted-foreground text-center text-base sm:text-lg max-w-3xl mx-auto mb-10">
-        All You Have To Do Is Fill Out A Simple 10-Minute Form About Your Audience
+        All You Have To Do Is Fill Out A Simple 5-Minute Form About Your Audience
         And I'll Give You A Complete Custom Monetization Plan!
       </p>
 
@@ -79,11 +79,11 @@ const HeroSection = () => (
             <div className="flex items-center justify-center gap-2 mb-1">
               <span className="text-primary font-extrabold text-2xl">ONLY</span>
               <span className="text-muted-foreground line-through text-lg">$500.00</span>
-              <span className="text-primary font-extrabold text-2xl">$97</span>
+              <span className="text-primary font-extrabold text-2xl">$47</span>
             </div>
-            <p className="text-muted-foreground text-sm mb-1">(SAVE $403.00 TODAY)</p>
+            <p className="text-muted-foreground text-sm mb-1">(SAVE $453.00 TODAY)</p>
             <p className="text-foreground/80 text-sm mb-4">
-              Get Your Custom Blueprint For <span className="line-through">$500</span> Just $97!
+              Get Your Custom Blueprint For <span className="line-through">$500</span> Just $47!
               <br />Delivered in 24 Hours Or Less.
             </p>
 

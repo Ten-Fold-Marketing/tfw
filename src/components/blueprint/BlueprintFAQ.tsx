@@ -7,7 +7,7 @@ import {
 
 const faqs = [
   {
-    q: "What exactly do I get for $97?",
+    q: "What exactly do I get for $47?",
     a: "A fully custom Offer Blueprint delivered to your inbox within 24 hours. It covers: your product idea, core promise, pricing model, product structure, delivery model, exact software/tools, funnel map, and a selling strategy mapped to your specific platform. Not a template. Not generic advice. A custom plan built around YOUR audience and YOUR content.",
   },
   {
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "What if I'm not happy with the blueprint?",
-    a: "If it doesn't give you complete clarity on what to sell, how to price it, how to build it, and how to sell it — reach out and I'll make it right. I'm not interested in keeping your $97 if I can't deliver a plan that's worth 10x that.",
+    a: "If it doesn't give you complete clarity on what to sell, how to price it, how to build it, and how to sell it — reach out and I'll make it right. I'm not interested in keeping your $47 if I can't deliver a plan that's worth 10x that.",
   },
 ];
 
@@ -49,11 +49,11 @@ const BlueprintFAQ = () => (
 
       <Accordion type="single" collapsible className="space-y-3">
         {faqs.map((faq, i) => (
-          <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-lg px-5">
-            <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline">
+          <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-lg px-5 overflow-hidden">
+            <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline text-sm sm:text-base">
               {faq.q}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
+            <AccordionContent className="text-muted-foreground text-sm">
               {faq.a}
             </AccordionContent>
           </AccordionItem>

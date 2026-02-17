@@ -72,7 +72,7 @@ const BlueprintHowItWorks = () => (
       </div>
 
       <CTAButton
-        text="YES! I WANT MY BLUEPRINT NOW — $97"
+        text="YES! I WANT MY BLUEPRINT NOW — $47"
         subtext="Get Your Custom Blueprint In 24 Hours Or Less"
       />
 

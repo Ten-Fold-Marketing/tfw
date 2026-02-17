@@ -21,7 +21,7 @@ const deliverables = [
   {
     icon: DollarSign,
     title: "Your Pricing Model (With Reasoning)",
-    desc: "Should you charge $27, $97, $297, or $997? I'll tell you WHY based on your audience and goals.",
+    desc: "Should you charge $27, $47, $297, or $997? I'll tell you WHY based on your audience and goals.",
   },
   {
     icon: Package,
@@ -70,7 +70,7 @@ const BlueprintDeliverables = () => (
       </div>
 
       <CTAButton
-        text="YES! I WANT MY BLUEPRINT NOW — $97"
+        text="YES! I WANT MY BLUEPRINT NOW — $47"
         subtext="Get Your Custom Blueprint In 24 Hours Or Less"
       />
 
