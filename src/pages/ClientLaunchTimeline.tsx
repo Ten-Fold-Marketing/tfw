@@ -33,7 +33,7 @@ const slides = [
         <div className="w-2/3 flex flex-col justify-center px-20">
           <p className="section-label mb-4">STEP 1</p>
           <h2 className="font-display text-[4rem] leading-[0.95] text-foreground mb-6">
-            FIND THE<br />NO-BRAINER
+            SURVEY YOUR<br />AUDIENCE
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
             Before we build anything, we find out exactly what your audience is already desperate to buy.
@@ -99,7 +99,7 @@ const slides = [
         <div className="w-2/3 flex flex-col justify-center px-20">
           <p className="section-label mb-4">STEP 2</p>
           <h2 className="font-display text-[4rem] leading-[0.95] text-foreground mb-6">
-            GIVE THEM A<br />REASON TO STAY
+            BUILD YOUR<br />EMAIL LIST
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
             We build a lead magnet so good, people feel stupid not opting in.
@@ -165,7 +165,7 @@ const slides = [
         <div className="w-2/3 flex flex-col justify-center px-20">
           <p className="section-label mb-4">STEP 3</p>
           <h2 className="font-display text-[4rem] leading-[0.95] text-foreground mb-6">
-            LAUNCH BEFORE<br />YOU'RE READY
+            TEST YOUR FIRST<br />DIGITAL PRODUCT
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
             Done beats perfect. We get your offer in front of buyers fast — then we optimize from real data.
@@ -424,6 +424,9 @@ const ClientLaunchTimeline = () => {
       <div className="absolute top-6 left-8 z-10 text-xs text-muted-foreground/50">
         ← → to navigate · F for fullscreen
       </div>
+
+      {/* Logo — bottom left, out of nav area */}
+      <img src={tenfoldLogo} alt="Ten Fold Marketing" className="absolute bottom-8 left-8 h-8 opacity-40 z-10" />
     </div>
   );
 };
